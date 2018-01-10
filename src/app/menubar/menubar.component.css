@@ -1,0 +1,74 @@
+.logo_tl{
+    padding:15px 10px 15px 10px;
+}
+#progressbar{
+    height:3px;
+    display:inline-block;
+    position:absolute;
+    background-color:#96bf48;
+    transition:width 1s;
+    box-shadow:0 0 5px rgba(0,0,0,.5);
+}
+#progressbox{
+    width:100%;
+    position:fixed;
+    top:50px;
+}
+
+.menubar {
+    box-shadow:0 0 5px rgba(0,0,0,.5);
+}
+
+.menubar .menuList {
+    padding: 0;
+}
+.menubar .menuList>li>a>div{
+    display: inline-block;
+    padding: 10px 20px;
+}
+.menubar .menuList>li>a>div:hover{
+    box-shadow:inset 0 -4px 0 #96bf48;color:black;
+}
+.userDrop {
+    position: absolute;
+    right: 0px;
+    top:0px;
+    background-color: #0094ff;
+    padding-left: 10px;
+    text-align: right;
+}
+
+#uf1{
+    width:100px;
+    text-align:center;
+    height:40px;
+    box-shadow:inset 0 -2px #96bf48;
+}
+#uf2, #uf2 img {
+    width:40px;
+    height:40px;
+}
+#notify{
+    margin:5px;
+    font-size:25px;
+    background-color:#0094ff;
+    color:white;
+    cursor:pointer;
+    padding:4px 7px;
+}
+#notify:hover{
+    background-color:#ed5b49;
+}
+#notifybox{
+    position:fixed;
+    right:10px;
+    top:65px;
+    height:350px;
+    width:400px;
+    background-color:#eee;
+    border-radius:3px;
+    -moz-border-radius: 3px;
+    padding:15px;
+    box-shadow:inset 3px 3px 1px #fd6b59,inset -3px -3px 1px #bd2b09,0 0 10px rgba(0,0,0,.5);
+    display:none;
+}

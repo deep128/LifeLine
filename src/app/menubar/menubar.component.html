@@ -1,0 +1,18 @@
+<nav ng-app="menuApp" ng-init="UserName" ng-controller="menuCtrl">
+  <div class="menubar">
+      <ul class="lit vlist menuList">
+        <li *ngFor="let menuItem of allMenuItems" ><a href="{{menuItem.link}}"><div>{{menuItem.name}}</div></a></li>
+        <li style="float:right; padding:0"><abbr title="Notifications"><div id="notify" class="sd">0</div></abbr></li>
+        <li style="float:right"><label><span style="color:96bf48">Class</span>Time</label></li>
+      </ul>
+      <div class="userDrop">
+        <div id="userfix">
+          <div id="uf1" class="invt">
+            <label><span style="font-size:16px">{{user?.firstName}}</span><br><span style="font-size:14px">LastName</span></label>
+          </div>
+          <div id="uf2" class="invt"><img src="Resources/user_images/verysmall/Profilepic" /></div>
+        </div>
+      </div>
+  </div>
+</nav>
+<div id="notifybox" class="scrollbox" ld="no"></div><div id="backcover"></div>

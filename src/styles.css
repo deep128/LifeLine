@@ -1,0 +1,171 @@
+*{
+	word-break:break-word;
+	margin:0;
+}
+
+a {
+	text-decoration:none;
+	color:#0094ff;
+}
+
+h1,h2,h3,h4,h5,h6{line-height:.15em;font-weight:500;}
+body{
+	margin:0px 0px 0px 0px;
+	font-family:'century gothic','calibri',sans-serif;
+}
+textarea, input{
+	font-family:'century gothic','calibri',sans-serif;
+}
+
+.tllogo:active{
+	color:#fff;
+}
+.tllogo:before{
+	color:#fff;
+	content:"LifeLine";
+}
+.vlist li{
+	display:inline;
+}
+
+.mlink{
+	cursor:pointer;
+	transition:box-shadow .3s;
+	color:#707070;
+	padding:5px;
+}
+
+.mlink:hover{
+	background-color:#96bf48;
+	color:white;
+}
+
+button {
+    cursor:pointer;
+}
+
+textarea{
+    resize:none;
+	outline:none;
+}
+footer {
+	padding:10px 0;
+	width:100%;
+	font-size:14px;
+	background-color: white;
+}
+footer a{color:#0094ff;padding:0 20px}
+
+button,.btn{
+	padding:7px 25px 7px 25px;
+	border:1px solid #96bf48;
+    background-color:#96bf48;
+	color:#fff;
+	text-align:center;
+	cursor:pointer;
+	margin:2px 2px 2px 2px;
+	border-radius:3px;
+	-moz-border-radius: 3px;
+}
+
+button:hover,.btn:hover {
+	background-color:#a6df68;
+}
+button:active,.btn:active {
+    background-color:#44bbff;
+}
+
+input:focus {outline:none;
+}
+
+.inputbox input,.inputbox textarea,.inputbox select{
+	border:0;
+	padding:0.3em;
+	width:100%;
+}
+.inputbox{
+	border:1px solid #d0d0d0;
+	background-color:white;
+	display:inline-block;
+	overflow:hidden;
+	vertical-align:middle;
+}
+.inputbox:hover {
+    border:1px solid #96bf48;
+}
+.link,.link a{
+	cursor:pointer;
+	color:black !important;
+}
+
+.link:hover, .link:hover a{
+		color:white !important;
+		background-color:#96bf48 !important;
+}
+
+.bw{
+	background-color:#0094ff !important;
+	color:white;
+	text-align:center;
+}
+
+.onbtn{
+	color:#404040;
+	background-color:f0f0f0;
+	height:20px;
+}
+.sd{
+	box-shadow:0 0 2px rgba(0,0,0,.5);
+}
+
+.lk {
+    cursor:pointer;
+}
+
+.lk:hover {
+	text-decoration:underline;
+}
+
+.inb{
+	display:inline-block;
+}
+
+.pad{
+	padding:5px 5px 5px 5px;
+}
+.lbl{
+	color:#0094ff;
+}
+.lit{
+	color:#707070;
+}
+#blackback{
+	position:fixed;
+	left:-20px;
+	top:-20px;
+	height:0px;
+	width:0px;
+	background-color:white;
+	text-align:center;
+	overflow:auto;
+
+	z-index:1;
+}
+
+.invt{
+	display:inline-block;
+	vertical-align:top;
+}
+
+.hidetxt~span{
+	display:none;
+}
+
+.tooltip-box{
+	background-color:rgba(0,0,0,.9);
+	color:white;
+	position:absolute;
+	padding:3px;
+	box-shadow:0 0 15px rgba(0,0,0,.5);
+	border-radius:3px;
+}

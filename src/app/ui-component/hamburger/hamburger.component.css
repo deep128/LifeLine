@@ -1,0 +1,31 @@
+.hamburger{
+    cursor:pointer;
+    padding: 0px;
+    border-radius: 100%;
+    box-shadow:0 0 5px rgba(0,0,0,.5);
+    height: 50px;
+    width: 50px;
+    position: relative;
+    display: inline-block;
+}
+.hamburger>div{
+    height:3px;
+    background-color:#00a4ff;
+    margin:0px 5px 0px 5px;
+    width:28px;
+    position: absolute;
+    left:5px;
+    border-radius: 2px;
+}
+.hamburger>.hamburger_line_1 {
+    top: 19px;
+}
+.hamburger>.hamburger_line_2 {
+    top: 25px;
+}
+.hamburger>.hamburger_line_3 {
+    top: 31px;
+}
+.hamburger:hover>div{
+    background-color:#96bf48;
+} 
