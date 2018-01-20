@@ -7,10 +7,11 @@
       </ul>
       <div class="userDrop">
         <div id="userfix">
-          <div id="uf1" class="invt">
-            <label><span style="font-size:16px">{{user?.firstName}}</span><br><span style="font-size:14px">LastName</span></label>
-          </div>
-          <div id="uf2" class="invt"><img src="Resources/user_images/verysmall/Profilepic" /></div>
+          <a (click)="logout()">
+            <div id="uf1" class="invt">
+              <label><span style="font-size:16px">{{user?.firstName}}</span><br><span style="font-size:14px">LastName</span></label>
+            </div>
+          </a>
         </div>
       </div>
   </div>

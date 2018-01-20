@@ -9,8 +9,11 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User> {
-    console.log(1);
-    return this.http.get<User>("http://localhost:9090/LifeLine/webapi/users/6");
+    return this.http.get<User>("");
+  }
+
+  getCurrUser(): Observable<User> {
+    return this.http.get<User>("http://localhost:9090/LifeLine/webapi/users/my");
   }
 
 }

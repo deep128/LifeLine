@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../Beans/User';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menubar',
@@ -13,16 +15,25 @@ export class MenubarComponent implements OnInit {
     {name:'Profile', link: 'profile'}];
   
     user:User;
-  constructor(private userService: UserService) {
+    constructor(private userService: UserService, private authService:AuthService,private router: Router) {
     this.getUser();
    }
 
   ngOnInit() { }
 
   getUser(): void {
-    this.userService.getUsers().subscribe(users=>{
-      console.log("out:" ,users)
-      this.user = users[0]});
+    this.userService.getCurrUser().subscribe(
+      users=>{
+        this.user = users[0]
+      },
+      (error)=>{
+        console.log(error)
+      });
+  }
+
+  logout() {
+    this.authService.logOut();
+    this.router.navigate(['/']);
   }
 }
 

@@ -9,7 +9,15 @@ import { UserService } from './user.service';
 import { HttpClient} from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
-import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './auth/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
+import { HttpModule } from '@angular/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './Shared/auth.interceptor';
+import { HeaderComponent } from './auth/ui-components/header/header.component';
 
 
 
@@ -18,12 +26,24 @@ import { LoginComponent } from './login/login.component';
     AppComponent,
     MenubarComponent,
     HamburgerComponent,
-    LoginComponent
+    SignUpComponent,
+    HomeComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule, AppRoutingModule
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpModule
   ],
-  providers: [UserService,HttpClient],
+  providers: [
+    UserService,
+    HttpClient,
+    AuthService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
