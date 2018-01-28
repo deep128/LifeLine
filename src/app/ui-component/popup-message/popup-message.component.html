@@ -1,0 +1,12 @@
+<div class="overlay" *ngIf="dialogBoxDetail.showOverlay">
+  <div class="dialog-box-container" *ngIf="dialogBoxDetail.showDialogBox">
+    <div class="dialog-box rounded">
+        <span class="cross-btn" (click)="closePopUp()">×</span>
+      <h3>{{dialogBoxDetail.head}}</h3>
+      <hr>
+      <p>
+        {{dialogBoxDetail.body}}
+      </p>
+    </div>
+  </div>
+</div>

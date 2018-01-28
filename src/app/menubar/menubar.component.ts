@@ -31,7 +31,7 @@ export class MenubarComponent implements OnInit {
       });
   }
 
-  logout() {
+  logOut() {
     this.authService.logOut();
     this.router.navigate(['/']);
   }

@@ -18,6 +18,7 @@ import { HttpModule } from '@angular/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Shared/auth.interceptor';
 import { HeaderComponent } from './auth/ui-components/header/header.component';
+import { PopupMessageComponent } from './ui-component/popup-message/popup-message.component';
 
 
 
@@ -29,7 +30,8 @@ import { HeaderComponent } from './auth/ui-components/header/header.component';
     SignUpComponent,
     HomeComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    PopupMessageComponent
   ],
   imports: [
     BrowserModule,

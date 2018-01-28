@@ -1,19 +1,26 @@
-<nav ng-app="menuApp" ng-init="UserName" ng-controller="menuCtrl">
-  <div class="menubar">
-      <ul class="lit vlist menuList">
-        <li *ngFor="let menuItem of allMenuItems" ><a href="{{menuItem.link}}"><div>{{menuItem.name}}</div></a></li>
-        <li style="float:right; padding:0"><abbr title="Notifications"><div id="notify" class="sd">0</div></abbr></li>
-        <li style="float:right"><label><span style="color:96bf48">Class</span>Time</label></li>
-      </ul>
-      <div class="userDrop">
-        <div id="userfix">
-          <a (click)="logout()">
-            <div id="uf1" class="invt">
-              <label><span style="font-size:16px">{{user?.firstName}}</span><br><span style="font-size:14px">LastName</span></label>
+<nav ng-app="menuApp" ng-init="UserName" ng-controller="menuCtrl" class="navbar navbar-expand-sm bg-light">
+  <ul class="navbar-nav">
+    <li *ngFor="let menuItem of allMenuItems" class="nav-item"><a href="{{menuItem.link}}" class="nav-link"><div>{{menuItem.name}}</div></a></li>
+  </ul>
+  <div class="userDrop">
+    <ul class="nav">
+        <li class="nav-item">
+            <div class="dropdown">
+              <button type="button" class="btn btn-primary btn-sm dropdown-toggle align-middle" data-toggle="dropdown"></button>
+              <div class="dropdown-menu">
+                <div class="dropdown-item">Settings</div>
+                <div class="dropdown-item" (click)="logOut()">Log out</div>
+              </div>
             </div>
-          </a>
-        </div>
-      </div>
+        </li>
+        <li>
+          <div id="userfix">
+            <div id="uf1" class="invt">
+              <label><span style="font-size:16px">{{user?.firstName}}</span><br><span style="font-size:14px">{{user?.lastName}}</span></label>
+            </div>
+          </div>
+        </li>
+    </ul>
   </div>
 </nav>
 <div id="notifybox" class="scrollbox" ld="no"></div><div id="backcover"></div>

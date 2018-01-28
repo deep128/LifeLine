@@ -1,6 +1,8 @@
 <app-header></app-header>
-<div class="row">
+<div class="container">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <h2>Login</h2>
+        <br/><hr>
         <form (ngSubmit)="onSignIn(f)" #f="ngForm">
           <div class="form-group">
               <label>Email: </label>
@@ -10,10 +12,11 @@
               <label>Password: </label>
               <input name="password" type="password" id="password" ngModel class="form-control">
           </div>
-          <button class="btn btn-primary" type="submit">Login</button>
+          <button class="btn btn-primary active" type="submit">Login</button>
         </form>
-        <div>
-          <button routerLink="/signup" class="btn">SignUp</button>
+        <div style="text-align:center">
+            <button routerLink="/signup" class="btn btn-lg">SignUp</button>
         </div>
       </div>
 </div>
+<app-popup-message [dialogBoxDetail]="dialogBoxDetail"></app-popup-message>
