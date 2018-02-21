@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm} from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Response } from '@angular/http/src/static_response';
+import { Response } from '@angular/http';
 import { error } from 'selenium-webdriver';
 import { Router } from '@angular/router';
 import { DialogBoxDetail } from '../../ui-component/popup-message/DialogBoxDetail';

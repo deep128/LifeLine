@@ -45,7 +45,7 @@ import { Config } from './config.service';
     UserService,
     HttpClient,
     AuthService,
-    Config
+    Config,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
