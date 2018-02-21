@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.authService.isAuthenticated().subscribe((response:Response)=>{
       if(response.status != 202) {
         this.authService.logOut();
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       } 
     },
     (error)=>{
