@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './Shared/auth.interceptor';
 import { HeaderComponent } from './auth/ui-components/header/header.component';
 import { PopupMessageComponent } from './ui-component/popup-message/popup-message.component';
+import { Config } from './config.service';
 
 
 
@@ -44,6 +45,7 @@ import { PopupMessageComponent } from './ui-component/popup-message/popup-messag
     UserService,
     HttpClient,
     AuthService,
+    Config
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

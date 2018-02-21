@@ -4,15 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import { Response } from '@angular/http';
 import { tokenName } from '@angular/compiler';
 import { Router } from '@angular/router';
+import { Config } from '../config.service';
 
 @Injectable()
 export class AuthService {
 
   private jwtToken:string;
-  readonly tokenName:string = "JWTToken";
+  readonly tokenName:string = "Token";
   private loggedIn:boolean = false;
 
-  constructor(private http: Http,private router:Router) { 
+  constructor(private http: Http,private router:Router,private config:Config) { 
     let match = document.cookie.match(new RegExp(this.tokenName + '=[^;]+'));
     if(match) {
       this.setJwtToken(match[0].split("=")[1]);
@@ -24,7 +25,7 @@ export class AuthService {
    }
 
   signInUser(username: string, password: string):Observable<Response> {
-    const authUrl = 'http://localhost:9090/LifeLine/webapi/authservice';
+    const authUrl = this.config.baseAPIUrl + 'api/authservice';
     const authorization:string = "Basic " + btoa(username + ":" + password);
     const header = new Headers({
       'Authorization': authorization,
@@ -39,7 +40,7 @@ export class AuthService {
   }
 
   isAuthenticated():Observable<Response> {
-      const authUrl = 'http://localhost:9090/LifeLine/webapi/authservice/';
+      const authUrl = this.config.baseAPIUrl + 'api/authservice/';
       return this.http.get(authUrl + this.jwtToken);
   }
 

@@ -21,8 +21,12 @@ export class HomeComponent implements OnInit {
       if(response.status != 202) {
         this.authService.logOut();
         this.router.navigate(['/']);
-      }
-    });
+      } 
+    },
+    (error)=>{
+      alert('Unable to authenticate');
+    } 
+  );
   }
 
 }
