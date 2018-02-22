@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Http, Headers, Response } from '@angular/http';
 import { Config } from '../../config.service';
 import { Router } from '@angular/router';
+import { DialogBoxDetail } from '../../ui-component/popup-message/DialogBoxDetail';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,13 +13,15 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
+  dialogBoxDetail:DialogBoxDetail = new DialogBoxDetail;
+  
   usernameAlert = {
     show: false,
     msg: "",
     style: ""
   }
 
-  constructor(private http:Http, private router: Router, private config:Config) { }
+  constructor(private http:Http, private router: Router, private config:Config, private authService:AuthService) { }
 
   ngOnInit() {
   }
@@ -25,9 +29,16 @@ export class SignUpComponent implements OnInit {
   onSubmit(form: NgForm) {
     const header = new Headers({'Content-Type':'application/json'});
     this.http.post(this.config.baseAPIUrl + 'api/signup',form.value,{headers: header}).subscribe((res:Response)=>{
-      if(res.status == 200) {
-        this.router.navigate(['/login']);
-        alert("User created");
+      if(res.status == 201) {
+        
+        this.authService.signInUser(form.value.username,form.value.password).subscribe((response:Response) => {
+          this.authService.login(response.text() + "");
+          this.authService.setJwtToken(response.text());
+          this.router.navigate(['\home']);
+        },(error)=>{
+          this.dialogBoxDetail.openDialogBox("Unable to Sign In", error);
+        });
+        
       }
     });
   }

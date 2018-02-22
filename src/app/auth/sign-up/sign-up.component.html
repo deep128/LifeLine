@@ -3,33 +3,51 @@
   <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <h2>Sign Up</h2>
     <br/><hr>
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="form-group">
-            <label>Username: </label>
-            <input name="username" type="text" id="username" autocomplete="off" class="form-control" ngModel (input)="validateUsername($event.target.value)"/>
-            <div *ngIf="usernameAlert.show" class="alert {{usernameAlert.style}}">
-                {{usernameAlert.msg}}
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+                <div class="form-group col-6">
+                    <label>First Name: </label>
+                    <input name="firstname" type="text" id="firstname" class="form-control" ngModel/>
+                </div>
+                <div class="form-group col-6">
+                    <label>Last Name: </label>
+                    <input name="lastname" type="text" id="lastname" class="form-control" ngModel/>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-              <label>Email: </label>
-              <input name="email" type="email" id="email" class="form-control" ngModel/>
-          </div>
-          <div class="form-group">
-              <label>Password: </label>
-              <input name="password" type="password" id="password" class="form-control" ngModel/>
-          </div>
-          <div class="form-group">
-            <label>Gender: </label>
-            <select name="gender" id="gender" class="form-control col-6" ngModel>
-                <option value="male" >Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
+            <div class="form-group">
+                <label>Email: </label>
+                <input name="email" type="email" id="email" class="form-control" ngModel/>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label>Username: </label>
+                    <input name="username" type="text" id="username" autocomplete="off" class="form-control" ngModel (input)="validateUsername($event.target.value)"/>
+                    <div *ngIf="usernameAlert.show" class="alert {{usernameAlert.style}}">{{usernameAlert.msg}}</div>
+                </div>        
+                <div class="form-group col-6">
+                    <label>Gender: </label>
+                    <select name="gender" id="gender" class="form-control" ngModel>
+                        <option value="male" >Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-6">
+                    <label>Password: </label>
+                    <input name="password" type="password" id="password" class="form-control" ngModel/>
+                </div>
+                <div class="form-group col-6">
+                    <label>Confirm Password: </label>
+                    <input name="conpassword" type="password" id="conpassword" class="form-control"/>
+                </div>
+            </div>
+          
           <button class="btn btn-primary active" type="submit">SignUp</button>
       </form>
       <div style="text-align:center">
-          <button routerLink="/" class="btn btn-lg">LogIn</button>
+          <button routerLink="/" class="btn btn-lg">Go to LogIn</button>
       </div>
   </div>
 </div>
+<app-popup-message [dialogBoxDetail]="dialogBoxDetail"></app-popup-message>
