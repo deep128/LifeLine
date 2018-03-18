@@ -15,10 +15,15 @@ export class SignUpComponent implements OnInit {
 
   dialogBoxDetail:DialogBoxDetail = new DialogBoxDetail;
   
-  usernameAlert = {
-    show: false,
-    msg: "",
-    style: ""
+   validationAlert = {
+    usernameShow: false,
+    usernameFunCallSet: false,
+    usernameLastArg: "",
+    emailShow: false,
+    emailFunCallSet: false,
+    emailLastArg: "",
+    emailLength: 0,
+    usernameLength:0
   }
 
   constructor(private http:Http, private router: Router, private config:Config, private authService:AuthService) { }
@@ -43,35 +48,73 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+
   validateUsername(username) {
+    this.validationAlert.usernameLength = username.length;
+    this.validationAlert.usernameShow = false;
     if(username.length > 0) {
-      const header = new Headers({'Content-Type':'application/json'});
-      const param = {
-        username: username
-      };
+      this.validationAlert.usernameLastArg = username;
+      if(this.validationAlert.usernameFunCallSet == false) {
+        this.validationAlert.usernameFunCallSet = true;
+        setTimeout(()=>{
+          this.checkUsernameAvailability(this.validationAlert.usernameLastArg);
+          this.validationAlert.usernameFunCallSet = false;
+        },3000);
+      }
+    }
+  }
 
+  validateEmail(email) {
+    this.validationAlert.emailLength = email.length;
+    this.validationAlert.usernameShow = false;
+    if(email.length > 0) {
+      this.validationAlert.emailLastArg = email;
+      if(this.validationAlert.emailFunCallSet == false) {
+        this.validationAlert.emailFunCallSet = true;
+        setTimeout(()=>{
+          this.checkEmailAvailability(this.validationAlert.emailLastArg);
+          this.validationAlert.emailFunCallSet = false;
+        },3000);
+      }
+    }
+  }
 
-      this.http.get(this.config.baseAPIUrl + 'api/signup/checkusername',{
-        headers: header,
-        params: param
-      }).subscribe((res:Response)=>{
-        if(res.status == 200) {
-          if(res.json().status == "404") {
-            this.usernameAlert.show = true;
-            this.usernameAlert.msg = "Username is available";
-            this.usernameAlert.style = "alert-success";
-          }
-          else {
-            this.usernameAlert.show = true;
-            this.usernameAlert.msg = "Username is not available, try something else";
-            this.usernameAlert.style = "alert-danger";
-          }
+  checkUsernameAvailability(username) {
+    const header = new Headers({'Content-Type':'application/json'});
+    const param = {
+      username: username
+    };
+
+    this.http.get(this.config.baseAPIUrl + 'api/signup/check/username',{
+      headers: header,
+      params: param
+    }).subscribe((res:Response)=>{
+      if(res.status == 200) {
+        if(res.json().status == "200") {
+          if(this.validationAlert.usernameLength > 0)
+            this.validationAlert.usernameShow = true;
         }
-      });
-    }
-    else {
-      this.usernameAlert.show = false;
-    }
+      }
+    });
+  }
+
+  checkEmailAvailability(email) {
+    const header = new Headers({'Content-Type':'application/json'});
+    const param = {
+      email: email
+    };
+
+    this.http.get(this.config.baseAPIUrl + 'api/signup/check/email',{
+      headers: header,
+      params: param
+    }).subscribe((res:Response)=>{
+      if(res.status == 200) {
+        if(res.json().status == "200") {
+          if(this.validationAlert.emailLength > 0)
+            this.validationAlert.emailShow = true;
+        }
+      }
+    });
   }
 
 }

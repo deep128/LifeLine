@@ -16,14 +16,15 @@
             </div>
             <div class="form-group">
                 <label>Email: </label>
-                <input name="email" type="email" id="email" class="form-control" ngModel/>
+                <input name="email" type="email" id="email" class="form-control" ngModel (input)="validateEmail($event.target.value)" />
+                <div *ngIf="validationAlert.emailShow" class="alert alert-danger">Email already used, try something else</div>
             </div>
             <div class="row">
                 <div class="form-group col-6">
                     <label>Username: </label>
-                    <input name="username" type="text" id="username" autocomplete="off" class="form-control" ngModel (input)="validateUsername($event.target.value)"/>
-                    <div *ngIf="usernameAlert.show" class="alert {{usernameAlert.style}}">{{usernameAlert.msg}}</div>
-                </div>        
+                    <input name="username" type="text" id="username" autocomplete="false" class="form-control" ngModel (input)="validateUsername($event.target.value)"/>
+                    <div *ngIf="validationAlert.usernameShow" class="alert alert-danger">Username is not available, try something else</div>
+                </div>
                 <div class="form-group col-6">
                     <label>Gender: </label>
                     <select name="gender" id="gender" class="form-control" ngModel>
